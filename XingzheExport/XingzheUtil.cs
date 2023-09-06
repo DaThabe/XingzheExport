@@ -1,4 +1,4 @@
-﻿using Sporter.API.XingZhe.Data;
+﻿using XingzheExport.Data;
 using System.Xml;
 
 namespace XingzheExport;
@@ -53,7 +53,7 @@ public static class XingzheUtil
 
         //路径名称
         XmlElement trk_name = xmlDoc.CreateElement("name");
-        trk_name.InnerText = "Thabe.Sporter";
+        trk_name.InnerText = "XingzheExport";
 
         //路径组根节点
         XmlElement trk_trkseg = xmlDoc.CreateElement("trkseg");

@@ -1,8 +1,7 @@
 ﻿using System.Xml;
-using XingzheExport;
 using XingzheExport.Math;
 
-namespace Sporter.API.XingZhe.Data;
+namespace XingzheExport.Data;
 
 
 
@@ -14,17 +13,17 @@ public partial class WorkoutInfo
     /// <summary>
     /// 锻炼记录标题
     /// </summary>
-    public string Title { get; }
+    public string Title { get; } = "";
 
     /// <summary>
     /// 锻炼开始时间
     /// </summary>
-    public DateTime Time { get; }
+    public DateTime Time { get; } = DateTime.MinValue;
 
     /// <summary>
     /// 锻炼信息节点
     /// </summary>
-    public Point[] Points { get; }
+    public Point[] Points { get; } = Array.Empty<Point>();
 
 
 
@@ -43,6 +42,8 @@ public partial class WorkoutInfo
 /// </summary>
 public partial class WorkoutInfo
 {
+    public WorkoutInfo() { }
+
     /// <summary>
     /// 将服务器返回的 GPX 和 外设数据节点 Json 根节点 合并
     /// </summary>

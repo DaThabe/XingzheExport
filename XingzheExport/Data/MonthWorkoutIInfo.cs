@@ -1,7 +1,6 @@
-﻿using XingzheExport;
-using XingzheExport.Math;
+﻿using XingzheExport.Math;
 
-namespace Sporter.API.XingZhe.Data;
+namespace XingzheExport.Data;
 
 
 
@@ -13,17 +12,17 @@ public partial class MonthWorkoutIInfo
     /// <summary>
     /// 所有锻炼信息
     /// </summary>
-    public WorkoutItem[] WorkoutInfos { get; }
+    public WorkoutItem[] WorkoutInfos { get; } = Array.Empty<WorkoutItem>();
 
     /// <summary>
     /// 本月总里程
     /// </summary>
-    public Length TotalMileage { get; }
+    public Length TotalMileage { get; } = Length.Zero;
 
     /// <summary>
     /// 本月总骑行时间
     /// </summary>
-    public TimeSpan TotalTime { get; }
+    public TimeSpan TotalTime { get; } = TimeSpan.Zero;
 
 
     /// <summary>
@@ -45,6 +44,8 @@ public partial class MonthWorkoutIInfo
 /// </summary>
 public partial class MonthWorkoutIInfo
 {
+    public MonthWorkoutIInfo() { }
+
     /// <summary>
     /// 将服务器返回的完整json作为根节点传入
     /// </summary>

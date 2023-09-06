@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-using Sporter.API.XingZhe.Data;
 using System.Xml;
+using XingzheExport.Data;
 
 namespace XingzheExport;
 
@@ -24,7 +24,7 @@ public static class XingzheAPI
         dynamic? root = await XingzheHttpClient.Get(cookie).GetJsonAsync(url) ??
             throw new HttpRequestException("用户信息获取失败, 请检查 Cookie 是否失效");
 
-        return new(root);
+        return new UserInfo(root);
     }
 
     /// <summary>

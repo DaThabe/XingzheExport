@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using XingzheExport.Console.UI;
 using XingzheExport.Console.UI.Widget;
+using XingzheExport.Data;
 
 namespace XingzheExport.Console;
 
@@ -28,6 +29,13 @@ internal static class Launcher
     /// </summary>
     public static void Main()
     {
+        {
+            WorkoutInfo _ = new();
+            UserInfo __ = new();
+            MonthWorkoutIInfo ___ = new();
+        }
+
+
         IWidgetStack widget_stack = new ActivityWidget(MainMenu);
 
 

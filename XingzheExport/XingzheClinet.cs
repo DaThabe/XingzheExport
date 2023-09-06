@@ -1,4 +1,4 @@
-﻿using Sporter.API.XingZhe.Data;
+﻿using XingzheExport.Data;
 
 namespace XingzheExport;
 

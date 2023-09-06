@@ -1,6 +1,6 @@
 ﻿using XingzheExport.Math;
 
-namespace Sporter.API.XingZhe.Data;
+namespace XingzheExport.Data;
 
 
 
@@ -17,12 +17,12 @@ public partial class UserInfo
     /// <summary>
     /// 用户名
     /// </summary>
-    public string Name { get; }
+    public string Name { get; } = "";
 
     /// <summary>
     /// 邮箱
     /// </summary>
-    public string Email { get; }
+    public string Email { get; } = "";
 
     /// <summary>
     /// 等级
@@ -32,7 +32,7 @@ public partial class UserInfo
     /// <summary>
     /// 总里程
     /// </summary>
-    public Length TotalMileage { get; }
+    public Length TotalMileage { get; } = Length.Zero;
 
 
     /// <summary>
@@ -49,6 +49,8 @@ public partial class UserInfo
 /// </summary>
 public partial class UserInfo
 {
+    public UserInfo() { }
+
     //将服务器返回的完整json作为根节点传入
     internal UserInfo(dynamic root)
     {
