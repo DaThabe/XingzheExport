@@ -1,7 +1,7 @@
 # 行者运动数据导出工具
 
 [![License: Apache License 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![Version](https://img.shields.io/badge/Version-beta0.1-blue.svg)](https://github.com/yourusername/yourrepo/releases)
+[![Version](https://img.shields.io/badge/Version-0.0.1alpha-blue.svg)](https://github.com/yourusername/yourrepo/releases)
 
 
 ![](Resources/Image/icon.png)

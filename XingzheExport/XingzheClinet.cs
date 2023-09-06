@@ -90,7 +90,7 @@ public class XingzheClinet
     /// </summary>
     private static string SaveWorkout(WorkoutInfo info, (string Full, string Folder, string Name) fileInfo, bool useLocal = true)
     {
-        var (Full, Folder, Name) = fileInfo;
+        var (Full, Folder, _) = fileInfo;
 
         if (File.Exists(Full) && useLocal) return Full;
 
