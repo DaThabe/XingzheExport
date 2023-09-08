@@ -44,7 +44,7 @@ public static class XingzheUtil
 
         //时间
         XmlElement time = xmlDoc.CreateElement("time");
-        time.InnerText = info.Time.AddHours(-8).ToString("yyyy-MM-ddTHH:mm:ssZ");
+        time.InnerText = info.Time.ToString("yyyy-MM-ddTHH:mm:ss+08");
 
 
 
@@ -79,7 +79,7 @@ public static class XingzheUtil
 
             //时间
             var p_time = xmlDoc.CreateElement("time");
-            p_time.InnerText = p.Time.AddHours(-8).ToString("yyyy-MM-ddTHH:mm:ssZ");
+            p_time.InnerText = p.Time.AddHours(-8).ToString("yyyy-MM-ddTHH:mm:ss+08");
 
             //扩展信息
             var extensions = xmlDoc.CreateElement("extensions");

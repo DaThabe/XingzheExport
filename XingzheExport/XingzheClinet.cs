@@ -35,11 +35,20 @@ public class XingzheClinet
     /// <summary>
     /// 同步数据
     /// </summary>
-    public async Task<int> SyncWorkoutDataAsync(Action<(string Path, MonthWorkoutIInfo.WorkoutItem Workout, bool UseCache)>? savedCallback = null)
+    public Task<int> SyncWorkoutDataAsync(Action<(string Path, MonthWorkoutIInfo.WorkoutItem Workout, bool UseCache)>? savedCallback = null)
+    {
+        return SyncWorkoutDataAsync(new DateTime(2012, 1, 1), savedCallback);
+    }
+
+    /// <summary>
+    /// 同步数据
+    /// </summary>
+    /// <param name="finishTime">截止同步的时间</param>
+    public async Task<int> SyncWorkoutDataAsync(DateTime finishTime, Action<(string Path, MonthWorkoutIInfo.WorkoutItem Workout, bool UseCache)>? savedCallback = null)
     {
         int sync_count = 0;
 
-        for (var cur_time = DateTime.Now; cur_time.Year > 2012; cur_time = cur_time.AddMonths(-1))
+        for (var cur_time = DateTime.Now; cur_time > finishTime; cur_time = cur_time.AddMonths(-1))
         {
             var info = await XingzheAPI.GetMonthWorkoutInfoAsync(_Cookie, UserInfo.Id, cur_time.Year, cur_time.Month);
             if (info.WorkoutInfos.Length == 0) continue;
