@@ -55,7 +55,7 @@ public partial class WorkoutInfo
         Title = gpxDocument?["gpx"]?["name"]?.InnerText ?? "";
 
         var time_text = gpxDocument?["gpx"]?["time"]?.InnerText;
-        Time = time_text is null ? DateTime.Now : DateTime.Parse(time_text);
+        Time = time_text is null ? DateTime.Now : DateTime.Parse(time_text) - TimeSpan.FromHours(8);
 
         var nodes = gpxDocument?["gpx"]?["trk"]?["trkseg"]?.ChildNodes;
         if (nodes is null)
@@ -103,9 +103,12 @@ public partial class WorkoutInfo
     //设置外设数据
     private static void SetPeripheralInfo(ref List<Point> point, dynamic root)
     {
-        Dictionary<DateTime, Point> cache = 
-            new(from i in point select new KeyValuePair<DateTime, Point>(i.Time, i));
+        Dictionary<DateTime, Point> cache = new();
 
+        foreach (var i in point)
+        {
+            cache[i.Time] = i;
+        }
 
         foreach(var i in root.points)
         {
