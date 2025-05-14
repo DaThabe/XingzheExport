@@ -339,7 +339,9 @@ internal class XingzheApiV1(ILogger<XingzheApiV1> logger) : IXingzheApiV1
             {
                 Latitude = lat,
                 Longitude = lon,
-                //https://github.com/DaThabe/XingzheExport/issues/1
+
+                // 修复了 GitHub Issue #1：行者导出的GPX时间为北京时间但时区用的是UTC
+                // 参考：https://github.com/DaThabe/XingzheExport/issues/1
                 Timestamp = new DateTimeOffset(time, TimeSpan.FromHours(8))
             });
         }
