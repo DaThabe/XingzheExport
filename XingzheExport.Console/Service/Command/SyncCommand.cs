@@ -40,20 +40,25 @@ internal class SyncCommand(
                 var cur = x.Current + 1; if (cur >= x.Max) cur = x.Max;
                 task.Value(cur);
 
+                string message = string.Empty;
+
                 if (x.Exception != null)
                 {
-                    task.Description(x.Exception.Message);
+                    message = x.Exception.Message;
                 }
                 else if (x.WorkoutDetail != null)
                 {
-                    task.Description(x.WorkoutDetail.ToString());
+                    message = x.WorkoutDetail.ToString();
                 }
+
+                if (string.IsNullOrWhiteSpace(message)) message = DateTime.Now.ToString();
+                task.Description(message);
             });
 
             return (x.Key, x.Value.Id, progress);
         });
 
-        foreach (var (sessionId, userId, progress) in tasks)
+        foreach (var (sessionId, userId, progress) in tasks.AsParallel().WithDegreeOfParallelism(5))
         {
             await syncService.SyncAsync(sessionId, x => SaveGpxFile(userId, x), progress);
         }

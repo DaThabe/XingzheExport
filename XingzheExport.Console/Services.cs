@@ -44,8 +44,6 @@ internal static class Services
             return app;
         });
 
-        services.AddHostedService<CommandHostedService>();
-
         return services;
     }
 }
