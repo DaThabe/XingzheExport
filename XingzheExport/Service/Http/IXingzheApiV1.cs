@@ -283,7 +283,7 @@ internal class XingzheApiV1(ILogger<XingzheApiV1> logger) : IXingzheApiV1
             var basePoint = trackPointBases.ElementAtOrDefault(i);
             if (basePoint is null) continue;
 
-            trackPoints.Add(new WorkoutTrackPoint
+                trackPoints.Add(new WorkoutTrackPoint
             {
                 Latitude = basePoint.Latitude,
                 Longitude = basePoint.Longitude,
@@ -292,7 +292,7 @@ internal class XingzheApiV1(ILogger<XingzheApiV1> logger) : IXingzheApiV1
                 Distance = Length.FromMeters(distance.ElementAtOrDefault(i)),
                 Cadence = Frequency.FromCyclesPerMinute(cadences.ElementAtOrDefault(i)),
                 Temperature = Temperature.FromDegreesCelsius(temperatures.ElementAtOrDefault(i)),
-                Speed = Speed.FromKilometersPerHour(speeds.ElementAtOrDefault(i)),
+                Speed = Speed.FromMetersPerSecond(speeds.ElementAtOrDefault(i)),
                 Power = Power.FromWatts(powers.ElementAtOrDefault(i)),
                 Timestamp = timestamps[i].ToBeijingTime()
             });

@@ -8,6 +8,9 @@ using XingzheExport.Console;
 using XingzheExport.Console.Service.Logging;
 
 
+
+args = ["sync"];
+
 var appHost = Host.CreateDefaultBuilder(args)
     .ConfigureHostConfiguration(x=>
     {
