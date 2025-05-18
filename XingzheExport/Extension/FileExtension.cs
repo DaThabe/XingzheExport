@@ -60,7 +60,7 @@ public static class FileExtension
     }
 
     /// <summary>
-    /// 将WorkoutInfo转为TCX文档
+    /// 将WorkoutInfo转为TCX文档 
     /// </summary>
     /// <param name="info"></param>
     /// <returns></returns>
