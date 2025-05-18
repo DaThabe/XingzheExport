@@ -34,7 +34,7 @@ public static class FileExtension
 
             new XElement(ns + "name", info.Title),
             new XElement(ns + "desc", "由 [XingzheExport] 根据 [行者] 软件 生成"),
-            new XElement(ns + "time", info.BeginTime),
+            new XElement(ns + "time", info.BeginTime.UtcDateTime),
 
             new XElement(ns + "trk",
                 new XElement(ns + "name", "XingzheExport"),
@@ -44,9 +44,9 @@ public static class FileExtension
                         new XAttribute("lat", p.Latitude),
                         new XAttribute("lon", p.Longitude),
                         new XElement(ns + "ele", p.Altitude.As(LengthUnit.Meter)),
-                        new XElement(ns + "time", p.Timestamp),
+                        new XElement(ns + "time", p.Timestamp.UtcDateTime),
                         new XElement(ns + "extensions",
-                            new XElement(ns + "speed", p.Speed.As(SpeedUnit.MeterPerSecond)),
+                            new XElement(ns + "speed", Math.Round(p.Speed.As(SpeedUnit.MeterPerSecond), 3)),
                             new XElement(ns + "cadence", p.Cadence.As(FrequencyUnit.CyclePerMinute)),
                             new XElement(ns + "heartrate", p.Heartrate.As(FrequencyUnit.BeatPerMinute)),
                             new XElement(ns + "power", p.Power.As(PowerUnit.Watt))
@@ -60,7 +60,7 @@ public static class FileExtension
     }
 
     /// <summary>
-    /// 将WorkoutInfo转为TCX文档
+    /// 将WorkoutInfo转为TCX文档 
     /// </summary>
     /// <param name="info"></param>
     /// <returns></returns>
